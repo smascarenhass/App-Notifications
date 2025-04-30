@@ -1,0 +1,104 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+/npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+
+# React Native
+.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+dist/
+
+# Production
+/build
+/android/app/build
+/android/build
+/android/gradle
+/android/local.properties
+/android/.gradle
+/android/captures
+/android/app/release
+
+# iOS
+/ios/build
+/ios/Pods
+/ios/*.xcworkspace
+/ios/*.xcodeproj/*
+!ios/*.xcodeproj/project.pbxproj
+!ios/*.xcodeproj/xcshareddata/
+!ios/*.xcworkspace/contents.xcworkspacedata
+/ios/.xcode.env.local
+
+# Testing
+/coverage
+
+# Debug
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - IntelliJ/Android Studio
+*.iml
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+
+# Sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arquivos específicos do projeto
+*.log
+*.tmp
+*.temp
+.watchmanconfig
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
+
+# Arquivos de chave e certificados
+*.keystore
+!debug.keystore
+google-services.json
+GoogleService-Info.plist
+
+# Arquivos temporários
+*.swp
+*.swo
+*~ notificationtests-a8cbf-firebase-adminsdk-fbsvc-217446934a.json
+notificationtests-a8cbf-firebase-adminsdk-fbsvc-217446934a.json

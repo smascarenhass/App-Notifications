@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "613675225229",
+    "project_id": "notificationtests-a8cbf",
+    "storage_bucket": "notificationtests-a8cbf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613675225229:android:d24c220c60851972fd52c4",
+        "android_client_info": {
+          "package_name": "com.meuapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwP-0I0XMqIx0fK_quCT5TJ4gCOFakGc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
