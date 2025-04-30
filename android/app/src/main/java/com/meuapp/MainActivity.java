@@ -1,9 +1,12 @@
 package com.meuapp;
 
 import com.facebook.react.ReactActivity;
+<<<<<<< HEAD
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+=======
+>>>>>>> 88ad77129c9ac33a4198075879d170cfcdf8a69f
 
 public class MainActivity extends ReactActivity {
 
@@ -15,6 +18,7 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "MeuApp";
   }
+<<<<<<< HEAD
 
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. Here we use a util class {@link
@@ -29,4 +33,6 @@ public class MainActivity extends ReactActivity {
         // If you opted-in for the New Architecture, we enable the Fabric Renderer.
         DefaultNewArchitectureEntryPoint.getFabricEnabled());
   }
+=======
+>>>>>>> 88ad77129c9ac33a4198075879d170cfcdf8a69f
 }
