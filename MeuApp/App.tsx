@@ -15,6 +15,9 @@ import {
   Text,
   useColorScheme,
   View,
+  Alert,
+  Linking,
+  Platform,
 } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 
@@ -65,13 +68,69 @@ function App(): JSX.Element {
 
   useEffect(() => {
     async function requestUserPermission() {
-      const authStatus = await messaging().requestPermission();
-      const enabled =
-        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+      try {
+        // Verifica se tem permissão
+        const authStatus = await messaging().requestPermission();
+        const enabled =
+          authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+          authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-      if (enabled) {
-        console.log('Authorization status:', authStatus);
+        if (enabled) {
+          console.log('Autorização concedida:', authStatus);
+          getFCMToken();
+        } else {
+          // Se não tiver permissão, mostra um alerta explicando por que precisamos da permissão
+          Alert.alert(
+            'Permissão de Notificação',
+            'Para receber notificações importantes, precisamos da sua permissão. Deseja habilitar as notificações?',
+            [
+              {
+                text: 'Não',
+                style: 'cancel',
+              },
+              {
+                text: 'Abrir Configurações',
+                onPress: () => {
+                  // Abre as configurações do app para o usuário habilitar manualmente
+                  if (Platform.OS === 'ios') {
+                    Linking.openSettings();
+                  } else {
+                    Linking.openSettings();
+                  }
+                },
+              },
+            ],
+          );
+        }
+      } catch (error) {
+        console.log('Erro ao solicitar permissão:', error);
+      }
+    }
+
+    async function checkApplicationPermission() {
+      const authorizationStatus = await messaging().requestPermission();
+
+      if (authorizationStatus === messaging.AuthorizationStatus.NOT_DETERMINED) {
+        // O usuário ainda não foi questionado sobre as permissões
+        requestUserPermission();
+      } else if (authorizationStatus === messaging.AuthorizationStatus.DENIED) {
+        // O usuário negou as permissões
+        Alert.alert(
+          'Notificações Desativadas',
+          'Para receber notificações, você precisa habilitar as permissões nas configurações do app.',
+          [
+            {
+              text: 'Cancelar',
+              style: 'cancel',
+            },
+            {
+              text: 'Abrir Configurações',
+              onPress: () => Linking.openSettings(),
+            },
+          ],
+        );
+      } else {
+        // Permissão concedida
         getFCMToken();
       }
     }
@@ -79,17 +138,16 @@ function App(): JSX.Element {
     async function getFCMToken() {
       const fcmToken = await messaging().getToken();
       if (fcmToken) {
-        console.log('Your Firebase Token is:', fcmToken);
-        // Aqui você deve enviar este token para seu backend
+        console.log('Seu Token Firebase é:', fcmToken);
       }
     }
 
-    requestUserPermission();
+    // Verifica a permissão ao iniciar o app
+    checkApplicationPermission();
 
     // Listener para mensagens em foreground
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      console.log('Received foreground message:', remoteMessage);
-      // Aqui você pode mostrar uma notificação customizada
+      console.log('Mensagem recebida em primeiro plano:', remoteMessage);
     });
 
     return unsubscribe;

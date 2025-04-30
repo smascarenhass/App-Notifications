@@ -12,6 +12,14 @@ const message = {
     title: 'Teste de Notificação',
     body: 'Esta é uma mensagem de teste!',
   },
+  android: {
+    priority: 'high',
+    notification: {
+      sound: 'default',
+      priority: 'high',
+      channelId: 'default_channel'
+    }
+  },
   token: token,
 };
 
